@@ -1,0 +1,23 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+ul,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top; // Removes the 1px gap under images
+}
+* {
+  box-sizing: border-box; // invert padding and border, so that they are included in the width
+}
