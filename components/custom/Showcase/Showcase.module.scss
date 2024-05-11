@@ -1,0 +1,131 @@
+@use "../../../sass/abstracts/vars";
+@use "../../../sass/abstracts/mixins";
+
+.showcase {
+  //background-color: pink;
+  height: calc(100vh - 5rem);
+  //position: relative;
+  &.expanded {
+    height: auto;
+  }
+  &__images {
+    aspect-ratio: 16/9;
+    width: 100vw;
+    height: calc(100vw * (9 / 16));
+    background-color: red;
+    overflow: hidden;
+    transition: all 1s;
+    position: absolute;
+    top: 5rem;
+    &__list {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      transition: all 1s;
+      &__item {
+        width: 100%;
+        height: 100%;
+        &__image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+    &.expanded {
+      height: 100vh;
+      top: 0;
+      filter: blur(4px);
+      opacity: 0.65;
+    }
+    @include mixins.breakpoint(laptop) {
+      width: 60vw;
+      height: calc(60vw * (9 / 16));
+      position: absolute;
+      top: 7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      &.expanded {
+        width: 100vw;
+      }
+    }
+  }
+  &__content {
+    position: relative;
+    z-index: 2;
+    margin-top: -2rem;
+    @include mixins.breakpoint(laptop) {
+      margin-top: 0;
+    }
+  }
+  &__counter {
+    display: none;
+    @include mixins.breakpoint(laptop) {
+      display: block;
+      font-size: 1.5rem;
+      font-family: vars.$font__fat;
+    }
+  }
+  &__number {
+    font-family: vars.$font__slab;
+    font-size: 8rem;
+    line-height: 0.75;
+    font-weight: bold;
+    opacity: 0.6;
+    @include mixins.breakpoint(laptop) {
+      font-size: 31rem;
+    }
+  }
+
+  &__latest {
+    background-color: black;
+    padding: 1rem;
+    border: 1px solid white;
+  }
+  &__expanded__content {
+    //background-color: orange;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    &__top {
+      //background-color: pink;
+      height: calc(100vh - 7rem - 10rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 5rem;
+      align-items: center;
+      gap: 2rem;
+      @include mixins.breakpoint(laptop) {
+        height: calc(100vh - 7rem);
+        padding-bottom: 8rem;
+      }
+    }
+    &__bottom {
+      //background-color: lightblue;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      min-height: 100vh;
+    }
+  }
+}
+.album {
+  &__cover {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.showcase__artist__name {
+  font-size: 4rem;
+  font-family: vars.$font__fat;
+  line-height: 0.75;
+  text-transform: uppercase;
+  hyphens: manual;
+  @include mixins.breakpoint(laptop) {
+    font-size: 6rem;
+  }
+}

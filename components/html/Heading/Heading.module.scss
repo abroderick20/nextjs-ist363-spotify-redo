@@ -1,0 +1,36 @@
+@use "../../../sass/abstracts/mixins";
+@use "../../../sass/abstracts/vars";
+
+.heading {
+  margin: 0;
+  padding: 0;
+  hyphens: manual;
+  //font-family: Arial;
+  &--1 {
+    font-size: 2rem;
+    font-family: vars.$font__fat;
+  }
+  &--2 {
+    font-size: 2rem;
+    font-family: vars.$font__regular;
+    font-weight: bold;
+  }
+  &--3 {
+    font-size: 1rem;
+    font-family: vars.$font__condensed;
+    text-transform: uppercase;
+    color: vars.$color__brand;
+    font-weight: bold;
+  }
+  &--4 {
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: vars.$font__regular;
+  }
+  &--5 {
+    font-size: 0.9rem;
+    font-family: vars.$font__regular;
+    opacity: 0.75;
+  }
+  @include mixins.generateMargins();
+}

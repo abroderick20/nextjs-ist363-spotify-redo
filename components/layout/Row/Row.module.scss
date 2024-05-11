@@ -1,0 +1,14 @@
+@use "@/sass/abstracts/mixins";
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  //background-color: limegreen;
+  //gap: 1rem;
+  &.border-bottom-1 {
+    border-bottom: 1px solid gray;
+  }
+  @include mixins.generateJustifyContentClasses();
+  @include mixins.generateAlignItemsClasses();
+  @include mixins.generatePaddingClasses();
+}

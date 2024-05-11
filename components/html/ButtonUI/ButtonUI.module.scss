@@ -1,0 +1,31 @@
+@use "../../../sass/abstracts/vars";
+
+.btnui {
+  background-color: vars.$color__brand;
+  height: 3rem;
+  border: 0;
+  padding: 1rem;
+  font-family: vars.$font__condensed;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  gap: 1rem;
+  border: 1px solid black;
+  transition: all 0.5s;
+  &.label {
+    padding: 1rem 1.5rem;
+  }
+  &.close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+  &.disabled {
+    opacity: 0.25;
+    pointer-events: none;
+  }
+}

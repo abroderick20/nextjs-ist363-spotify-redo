@@ -1,0 +1,125 @@
+@mixin breakpoint($value) {
+    // need to validate $value
+   
+    // if a string use standard breakpoints
+    @if type-of($value) == "string" {
+     @if ($value == "xs" or $value == "phone") {
+      @media (max-width: 699px) {
+       @content;
+      }
+     } @else if ($value == "sm" or $value == "tablet") {
+      @media (min-width: 700px) {
+       @content;
+      }
+     } @else if ($value == "md" or $value == "laptop") {
+      @media (min-width: 980px) {
+       @content;
+      }
+     } @else if($value == "lg" or $value == "desktop") {
+      @media (min-width: 1140px) {
+       @content;
+      }
+     } @else if($value == "xl" or $value == "tvscreen") {
+      @media (min-width: 1260px) {
+       @content;
+      }
+     } @else {
+      @warn "Breakpoint mixin supports: xs or phone, sm or tablet, md or laptop, lg or desktop, xl or tvscreen as string variables";
+     }
+    }
+   
+    // if value then use value as minimum width.
+    @else if is-length($value) {
+     @media (min-width: #{$value}) {
+      @content;
+     }
+    } @else {
+     @warn "Breakpoint mixin supports: string variables or relative units";
+    }
+   
+    // if a length value than use that
+   
+    // error warn if string does not match or it is not a length
+   }
+   
+   @mixin generateJustifyContentClasses() {
+    $values: flex-start, flex-end, center, space-between, space-around,
+     space-evenly, initial, inherit;
+    @each $value in $values {
+     &.justify-content-#{$value} {
+      justify-content: $value;
+     }
+    }
+   }
+   
+   @mixin generateAlignItemsClasses() {
+    $values: stretch, flex-start, flex-end, center, baseline, initial, inherit;
+    @each $value in $values {
+     &.align-items-#{$value} {
+      align-items: $value;
+     }
+    }
+   }
+   
+   @mixin generateColClasses() {
+    $sizes: xs, sm, md, lg, xl;
+   
+    @each $size in $sizes {
+     @include breakpoint($size) {
+      @for $i from 1 through 12 {
+       &.col__#{$size}__#{$i} {
+        width: calc($i/12 * 100%);
+       }
+      }
+     }
+    }
+   }
+   
+   @mixin generateFontSizeClasses($rootFontSize) {
+    $multipliers: (
+     xs: 0.75,
+     sm: 0.9,
+     md: 1,
+     lg: 1.5,
+     xl: 3,
+    );
+    @each $size, $multiplier in $multipliers {
+     &.font_size--#{$size} {
+      font-size: calc($rootFontSize * $multiplier);
+     }
+    }
+   }
+   
+   @mixin generatePaddingClasses() {
+    $sides: top, right, bottom, left;
+   
+    @each $side in $sides {
+     @for $i from 1 through 6 {
+      &.padding-#{$side}-#{$i} {
+       padding-#{$side}: #{$i}rem;
+      }
+     }
+    }
+   }
+   
+   @mixin generateMargins() {
+    $sides: top, right, bottom, left;
+   
+    @each $side in $sides {
+     @for $i from 1 through 12 {
+      &.margin-#{$side}--#{$i} {
+       margin-#{$side}: #{$i}rem;
+      }
+     }
+    }
+   }
+   
+   @mixin generateTextAlignClasses() {
+    $values: left, right, center;
+   
+    @each $value in $values {
+     &.text-align--#{$value} {
+      text-align: $value;
+     }
+    }
+   }

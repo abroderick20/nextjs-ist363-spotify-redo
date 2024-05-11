@@ -1,3 +1,6 @@
+import Header from "../components/regions/Header";
+import Footer from "../components/regions/Footer";
+
 import "../sass/global.scss";
 
 //const inter = Inter({ subsets: ["latin"] });
